@@ -123,6 +123,17 @@ classdef autoit
             autoit.winWaitActive(title, text, timeout);
         end
         
+        function winMove(title, text, x, y, width, height)
+            u16title=autoit.validateStr(title);
+            u16text=autoit.validateStr(text);
+            autoit.validateInputNum(x,-inf,inf);
+            autoit.validateInputNum(y,-inf,inf);
+            autoit.validateInputNum(width,-inf,inf);
+            autoit.validateInputNum(height,-inf,inf);
+            calllib(autoit.LIBALIAS, 'AU3_WinMove', ...
+                u16title, u16text, x, y, width, height);
+        end
+
 %% --- Other methods -----------------------------------------------------------
         function old_val=setOption(option, value)
             u16str=autoit.validateStr(option);
