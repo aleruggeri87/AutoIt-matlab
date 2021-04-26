@@ -35,8 +35,8 @@ classdef autoit
         end
 
         function mouseMove(x, y, speed)
-            autoit.validateInputNum(x,0,inf);
-            autoit.validateInputNum(y,0,inf);
+            autoit.validateInputNum(x,-inf,inf);
+            autoit.validateInputNum(y,-inf,inf);
             if nargin < 3
                 speed=10;
             else
@@ -48,8 +48,8 @@ classdef autoit
 
         function mouseClick(button, x, y, nClics, speed)
             btt=autoit.parseMouseBtt(button);
-            autoit.validateInputNum(x,0,inf);
-            autoit.validateInputNum(y,0,inf);
+            autoit.validateInputNum(x,-inf,inf);
+            autoit.validateInputNum(y,-inf,inf);
             if nargin < 4
                 nClics=1;
             else
