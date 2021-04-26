@@ -107,7 +107,7 @@ classdef autoit
             end
             u16title=autoit.validateStr(title);
             u16text=autoit.validateStr(text);
-            autoit.validateNumber(timeoout,0,inf);
+            autoit.validateInputNum(timeout,0,inf);
             calllib(autoit.LIBALIAS, 'AU3_WinWaitActive', ...
                 u16title, u16text, timeout);
         end
@@ -122,7 +122,7 @@ classdef autoit
             autoit.winActivate(title, text);
             autoit.winWaitActive(title, text, timeout);
         end
-
+        
 %% --- Other methods -----------------------------------------------------------
         function old_val=setOption(option, value)
             u16str=autoit.validateStr(option);
