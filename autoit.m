@@ -55,7 +55,7 @@ classdef autoit
             else
                 autoit.validateInputNum(nClics,0,inf);
             end
-            if nargin < 5, 
+            if nargin < 5
                 speed=10;
             else
                 speed=autoit.parseSpeed(speed);
@@ -88,6 +88,28 @@ classdef autoit
             calllib(autoit.LIBALIAS, 'AU3_ClipPut', u16str);
         end
 
+%% --- control related methods -------------------------------------------------
+        function controlClick(title, text, controlID, button, nClicks, x, y)
+            if nargin < 6
+                x=0;
+                y=0;
+            end
+            if nargin < 5
+                nClicks=1;
+            end
+            if nargin < 4
+                button='left';
+            end
+                
+            u16title=autoit.validateStr(title);
+            u16text=autoit.validateStr(text);
+            u16controlID=autoit.validateStr(controlID);
+            btt=autoit.parseMouseBtt(button);
+            err=calllib(autoit.LIBALIAS, 'AU3_ControlClick', u16title, ...
+                u16text, u16controlID, btt, nClicks, x, y);
+            autoit.checkError(err);
+        end
+        
 %% --- window related methods --------------------------------------------------
         function winActivate(title, text)
             if nargin < 2
