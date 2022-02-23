@@ -119,6 +119,15 @@ classdef autoit
             u16text=autoit.validateStr(text);
             calllib(autoit.LIBALIAS, 'AU3_WinActivate', u16title, u16text);
         end
+        
+        function hndl=winActive(title, text)
+            if nargin < 2
+                text='';
+            end
+            u16title=autoit.validateStr(title);
+            u16text=autoit.validateStr(text);
+            hndl=calllib(autoit.LIBALIAS, 'AU3_WinActive', u16title, u16text);
+        end
 
         function winWaitActive(title, text, timeout)
             if nargin < 2
